@@ -1,0 +1,46 @@
+<ion-content>
+  <figure class="ion-padding ion-text-center">
+    <img src="assets/img/logo.png" />
+  </figure>
+
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <ion-item>
+      <ion-label>Coreo</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div *ngIf="emailField.hasError(validation.type) && 
+                    (emailField.dirty || emailField.touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div *ngIf="passwordField.hasError(validation.type) &&
+                    (passwordField.dirty || passwordField.touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    {{ errorMessage }}
+
+    <ion-button type="submit" expand="full" shape="round" 
+                color="success" [disabled]="loginForm.invalid">
+      Ingresar
+    </ion-button>
+  </form>
+</ion-content>
+
+<ion-footer class="ion-text-center" no-border>
+  <ion-button expand="full" shape="round" fill="outline" color="success">Registar</ion-button>
+</ion-footer>
