@@ -41,7 +41,9 @@ export class RegisterPage {
   }
 
   registerUser() {
-    
+    this.authService.registerUser(this.registerForm.getRawValue()).then(() => {
+      this.navCtrl.navigateBack('/login');
+    });
   }
 
   get nameField() {
