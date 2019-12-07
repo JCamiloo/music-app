@@ -13,13 +13,14 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
-  { path: 'home', 
-    canActivate: [LoginGuard, IntroGuard],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'menu',
+    canActivate: [LoginGuard, IntroGuard],
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
 ];
 

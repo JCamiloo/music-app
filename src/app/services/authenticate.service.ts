@@ -19,6 +19,10 @@ export class AuthenticateService {
     });
   }
 
+  logout() {
+    this.storage.set('isUserLoggedIn', false);
+  }
+
   registerUser(userData) {
     return this.storage.set('user', userData);
   }
