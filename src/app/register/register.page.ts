@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthenticateService } from '../services/authenticate.service';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
-
-  loginForm: FormGroup;
+export class RegisterPage {
+  
+  registerForm: FormGroup;
 
   validation_messages = {
+    name: [{ type: 'required', message: 'El nombre es requerido'}],
+    lastName: [{ type: 'required', message: 'El apellido es requerido'}],
     email: [
       { type: 'required', message: 'El email es requerido' },
       { type: 'email', message: 'El email no es válido' }
@@ -30,32 +32,31 @@ export class LoginPage implements OnInit {
               private authService: AuthenticateService,
               private navCtrl: NavController,
               private storage: Storage) {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
+      name: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
-  ngOnInit() {
+  registerUser() {
+    
   }
 
-  loginUser() {
-    this.authService.loginUser(this.loginForm.getRawValue()).then(res => {
-      this.errorMessage = "";
-      this.storage.set('isUserLoggedIn', true);
-      this.navCtrl.navigateForward('/home');
-    }).catch(err => this.errorMessage = err);
+  get nameField() {
+    return this.registerForm.get('name');
   }
 
-  goToRegister() {
-    this.navCtrl.navigateForward('/register');
+  get lastNameField() {
+    return this.registerForm.get('lastName');
   }
 
   get emailField() {
-    return this.loginForm.get('email');
+    return this.registerForm.get('email');
   }
 
   get passwordField() {
-    return this.loginForm.get('password');
+    return this.registerForm.get('password');
   }
 }

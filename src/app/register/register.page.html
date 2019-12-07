@@ -3,7 +3,35 @@
     <img src="assets/img/logo.png" />
   </figure>
 
-  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.name">
+        <div *ngIf="nameField.hasError(validation.type) && 
+                    (nameField.dirty || nameField.touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label>Apellido</ion-label>
+      <ion-input formControlName="lastName"></ion-input>
+    </ion-item>
+
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div *ngIf="lastNameField.hasError(validation.type) && 
+                    (lastNameField.dirty || lastNameField.touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
     <ion-item>
       <ion-label>Correo</ion-label>
       <ion-input formControlName="email"></ion-input>
@@ -35,15 +63,8 @@
     {{ errorMessage }}
 
     <ion-button type="submit" expand="full" shape="round" 
-                color="success" [disabled]="loginForm.invalid">
-      Ingresar
+                color="success" [disabled]="registerForm.invalid">
+      Registrar
     </ion-button>
   </form>
 </ion-content>
-
-<ion-footer class="ion-text-center" no-border>
-  <ion-button expand="full" shape="round" 
-              (click)="goToRegister()"  fill="outline" color="success">
-    Registar
-  </ion-button>
-</ion-footer>
