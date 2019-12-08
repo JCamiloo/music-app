@@ -13,6 +13,7 @@ export class HomePage {
   artists = [];
   songs = [];
   albums = [];
+  song:any = {};
 
   slideOpts = {
     initialSlide: 1,
@@ -39,8 +40,10 @@ export class HomePage {
           songs: songs.tracks,
           artist: artist.name
         }
-      })
-      modal.present();
+      });
+
+      modal.onDidDismiss().then(song => this.song = song.data);
+      return await modal.present();
     });
   }
 }
