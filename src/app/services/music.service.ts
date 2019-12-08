@@ -15,6 +15,10 @@ export class MusicService {
   }
 
   getNewReleases() {
-    return this.http.get(`${environment.API_URL}new-releases`).pipe(map((resp: any) => resp.albums.items));
+    return this.http.get(`${environment.API_URL}browse/new-releases`).pipe(map((resp: any) => resp.albums.items));
+  }
+
+  getArtistTopTracks(artistId) {
+    return this.http.get(`${environment.API_URL}artists/${artistId}/top-tracks?country=CO`)
   }
 }
