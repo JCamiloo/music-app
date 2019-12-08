@@ -22,11 +22,10 @@ export class HomePage {
   constructor(private musicService: MusicService) {}
 
   ionViewDidEnter() {
+    this.artists = this.musicService.getArtist();
     this.musicService.getNewReleases().subscribe(releases => {
-      this.artists = releases;
       this.songs = releases.filter(e => e.album_type === 'single');
       this.albums = releases.filter(e => e.album_type === 'album');
     });
   }
-
 }

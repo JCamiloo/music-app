@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthenticateService } from '../services/authenticate.service';
 import { NavController } from '@ionic/angular';
@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   loginForm: FormGroup;
 
@@ -34,9 +34,6 @@ export class LoginPage implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
-  }
-
-  ngOnInit() {
   }
 
   loginUser() {
