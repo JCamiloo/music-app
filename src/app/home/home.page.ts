@@ -32,15 +32,15 @@ export class HomePage {
   }
 
   async showSongs(artist: any) {
-    const songs: any = await this.musicService.getArtistTopTracks(artist.id);
-    const modal = await this.modalController.create({
-      component: SongModalComponent,
-      componentProps: {
-        songs: songs.tracks,
-        artist: artist.name
-      }
-    })
-
-    modal.present();
+    this.musicService.getArtistTopTracks(artist.id).subscribe(async (songs: any) => {
+      const modal = await this.modalController.create({
+        component: SongModalComponent,
+        componentProps: {
+          songs: songs.tracks,
+          artist: artist.name
+        }
+      })
+      modal.present();
+    });
   }
 }

@@ -1,14 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavParams, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-song-modal',
   templateUrl: './song-modal.component.html',
   styleUrls: ['./song-modal.component.scss'],
 })
-export class SongModalComponent implements OnInit {
+export class SongModalComponent {
 
-  constructor() { }
+  songs: any[] = [];
+  artist: any[] = [];
 
-  ngOnInit() {}
+  constructor(private navParams: NavParams, private modalController: ModalController) { }
 
+  ionViewDidEnter() {
+    console.log(this.navParams);
+    this.songs = this.navParams.data.songs;
+    this.artist = this.navParams.data.artist;
+  }
+
+  async selectSong(song) {
+    await this.modalController.dismiss(song);
+  }
 }
