@@ -32,6 +32,14 @@ export class HomePage {
     });
   }
 
+  playSong() {
+
+  }
+
+  pauseSong() {
+    
+  }
+
   async showSongs(artist: any) {
     this.musicService.getArtistTopTracks(artist.id).subscribe(async (songs: any) => {
       const modal = await this.modalController.create({
