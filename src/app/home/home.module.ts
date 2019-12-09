@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { SongModalComponent } from './components/song-modal/song-modal.component';
+import { SongDurationPipe } from './pipes/song-duration.pipe';
 
 @NgModule({
   declarations: [
     HomePage,
-    SongModalComponent
+    SongModalComponent,
+    SongDurationPipe
   ],
   entryComponents: [
     SongModalComponent

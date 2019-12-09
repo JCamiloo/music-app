@@ -41,12 +41,12 @@
 <ion-footer>
     <ion-grid>
         <ion-row>
-            <ion-col class="ion-text-start"> 0:00 </ion-col>
-            <ion-col class="ion-text-end"> 0:00 </ion-col>
+            <ion-col class="ion-text-start"> {{ currentSong.currentTime | songDuration }} </ion-col>
+            <ion-col class="ion-text-end"> {{ currentSong.duration | songDuration }} </ion-col>
         </ion-row>
     </ion-grid>
 
-    <ion-progress-bar [value]="0.5"></ion-progress-bar>
+    <ion-progress-bar [value]="newTime"></ion-progress-bar>
 
     <ion-grid>
         <ion-row>
@@ -60,7 +60,7 @@
 
             <ion-col class="ion-text-end" size="1">
                 <ion-icon name="play" (click)="playSong()" *ngIf="!song.playing"></ion-icon>
-                <ion-icon name="play" (click)="pauseSong()" *ngIf="song.playing"></ion-icon>
+                <ion-icon name="pause" (click)="pauseSong()" *ngIf="song.playing"></ion-icon>
             </ion-col>
         </ion-row>
     </ion-grid>

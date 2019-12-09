@@ -14,7 +14,6 @@ export class SongModalComponent {
   constructor(private navParams: NavParams, private modalController: ModalController) { }
 
   ionViewDidEnter() {
-    console.log(this.navParams);
     this.songs = this.navParams.data.songs;
     this.artist = this.navParams.data.artist;
   }

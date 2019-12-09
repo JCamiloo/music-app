@@ -14,6 +14,8 @@ export class HomePage {
   songs = [];
   albums = [];
   song:any = {};
+  currentSong:any = {};
+  newTime;
 
   slideOpts = {
     initialSlide: 1,
@@ -33,11 +35,17 @@ export class HomePage {
   }
 
   playSong() {
-
+    this.currentSong = new Audio(this.song.preview_url);
+    this.currentSong.play();
+    this.currentSong.addEventListener('timeupdate', () => {
+      this.newTime = ( 1 / this.currentSong.duration ) * this.currentSong.currentTime;
+    });
+    this.song.playing = true;
   }
 
   pauseSong() {
-    
+    this.currentSong.pause();
+    this.song.playing = false;
   }
 
   async showSongs(artist: any) {
