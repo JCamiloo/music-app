@@ -19,6 +19,10 @@ export class MusicService {
   }
 
   getArtistTopTracks(artistId) {
-    return this.http.get(`${environment.API_URL}artists/${artistId}/top-tracks?country=CO`)
+    return this.http.get(`${environment.API_URL}artists/${artistId}/top-tracks?country=CO`);
+  }
+
+  getAlbumTracks(albumId) {
+    return this.http.get(`${environment.API_URL}albums/${albumId}/tracks?country=CO`);
   }
 }

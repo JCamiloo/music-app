@@ -34,6 +34,35 @@ export class HomePage {
     });
   }
 
+  showSongs(artist: any) {
+    this.musicService.getArtistTopTracks(artist.id).subscribe((songs: any) => {
+      this.openDetailModal(artist.name + ' - Top Tracks', songs.tracks);
+    });
+  }
+
+  showAlbumSongs(album: any) {
+    this.musicService.getAlbumTracks(album.id).subscribe((albumResp: any) => {
+      this.openDetailModal(album.name, albumResp.items);
+    });
+  }
+
+  async openDetailModal(title: string, songs: any[]){
+    const modal = await this.modalController.create({
+        component: SongModalComponent,
+        componentProps: { title, songs }
+    });
+
+    modal.onDidDismiss().then(song => {
+      if (song.data) {
+        this.song = song.data
+        this.playSong();
+      } else {
+        this.song = {};
+      }
+    });
+    return await modal.present();
+  }
+
   playSong() {
     this.currentSong = new Audio(this.song.preview_url);
     this.currentSong.play();
@@ -46,20 +75,5 @@ export class HomePage {
   pauseSong() {
     this.currentSong.pause();
     this.song.playing = false;
-  }
-
-  async showSongs(artist: any) {
-    this.musicService.getArtistTopTracks(artist.id).subscribe(async (songs: any) => {
-      const modal = await this.modalController.create({
-        component: SongModalComponent,
-        componentProps: {
-          songs: songs.tracks,
-          artist: artist.name
-        }
-      });
-
-      modal.onDidDismiss().then(song => this.song = song.data);
-      return await modal.present();
-    });
   }
 }
