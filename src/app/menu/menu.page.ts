@@ -11,6 +11,10 @@ export class MenuPage {
 
   constructor(private navCtrl: NavController, private authService: AuthenticateService) { }
 
+  goToSettings() {
+    this.navCtrl.navigateRoot('/menu/settings');
+  }
+
   logout(){
     this.authService.logout();
     this.navCtrl.navigateRoot('/login');
