@@ -39,7 +39,7 @@
 </ion-content>
 
 <ion-footer>
-    <ion-grid>
+    <ion-grid *ngIf="currentSong">
         <ion-row>
             <ion-col class="ion-text-start"> {{ currentSong.currentTime | songDuration }} </ion-col>
             <ion-col class="ion-text-end"> {{ currentSong.duration | songDuration }} </ion-col>

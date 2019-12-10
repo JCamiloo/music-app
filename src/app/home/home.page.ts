@@ -13,8 +13,18 @@ export class HomePage {
   artists = [];
   songs = [];
   albums = [];
-  song:any = {};
-  currentSong:any = {};
+
+  song: {
+    preview_url: string,
+    playing: boolean,
+    name: string
+  } = {
+    preview_url: '',
+    playing: false,
+    name: ''
+  };
+
+  currentSong:HTMLAudioElement;
   newTime;
 
   slideOpts = {
@@ -57,7 +67,11 @@ export class HomePage {
         this.song = song.data
         this.playSong();
       } else {
-        this.song = {};
+        this.song = {
+          preview_url: '',
+          playing: false,
+          name: ''
+        };
       }
     });
     return await modal.present();

@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SongDurationPipe implements PipeTransform {
 
-  transform(time: string): string {
+  transform(time: number): string {
     if (time) {
       const partTime = parseInt(time.toString().split('.')[0]);
       let minutes = Math.floor(partTime / 60).toString();

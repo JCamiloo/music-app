@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 
 @Component({
@@ -9,10 +9,13 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class MenuPage {
 
-  constructor(private navCtrl: NavController, private authService: AuthenticateService) { }
+  constructor(private navCtrl: NavController, 
+              private authService: AuthenticateService,
+              private menuController: MenuController) { }
 
   goToSettings() {
     this.navCtrl.navigateRoot('/menu/settings');
+    this.menuController.close();
   }
 
   logout(){
