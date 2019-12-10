@@ -9,13 +9,21 @@
 
     <ion-content>
       <ion-list>
-        <ion-item> 
+        <ion-item (click)="goTo('home')"> 
           <ion-icon name="home" color="success" slot="start"></ion-icon>
-          Inicio </ion-item>
-        <ion-item (click)="goToSettings()"> 
+          Inicio 
+        </ion-item>
+
+        <ion-item (click)="goTo('sports')"> 
+          <ion-icon name="bicycle" color="success" slot="start"></ion-icon>
+          Deporte 
+        </ion-item>
+
+        <ion-item (click)="goTo('settings')"> 
           <ion-icon name="settings" color="success" slot="start"></ion-icon>
           Ajustes 
         </ion-item>
+
         <ion-item (click)="logout()"> 
           <ion-icon name="log-out" color="success" slot="start"></ion-icon>
           Salir 

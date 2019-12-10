@@ -13,9 +13,21 @@ export class MenuPage {
               private authService: AuthenticateService,
               private menuController: MenuController) { }
 
-  goToSettings() {
-    this.navCtrl.navigateRoot('/menu/settings');
-    this.menuController.close();
+  goTo(page: string) {
+    switch(page){
+      case 'home':
+        this.navCtrl.navigateRoot('menu/home');
+        this.menuController.close();
+        break;
+      case 'sports':
+        this.navCtrl.navigateRoot('menu/sports');
+        this.menuController.close();
+        break;
+      case 'settings':
+        this.navCtrl.navigateRoot('menu/settings');
+        this.menuController.close();
+        break;
+    }
   }
 
   logout(){

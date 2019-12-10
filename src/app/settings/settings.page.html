@@ -1,12 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-avatar (click)="takePhoto()">
-    <img *ngIf="!photo" [src]="userImage"/>
-    <img *ngIf="photo" [src]="photo"/>
-  </ion-avatar>
+<ion-content class="ion-text-center">
+  <div class="success-background ion-padding">
+    <ion-avatar (click)="takePhoto()">
+      <img *ngIf="!photo" [src]="userImage"/>
+      <img *ngIf="photo" [src]="photo"/>
+    </ion-avatar>
+
+    <h1> Juan Osorio </h1>
+    <h2> jcamilo.osorio15@gmail.com </h2>
+    
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-text-center row-header">
+        <ion-col> 140 </ion-col>
+        <ion-col> 2k </ion-col>
+        <ion-col> 500 </ion-col>
+      </ion-row>
+      
+      <ion-row class="ion-align-items-center ion-text-center">
+        <ion-col> Artistas </ion-col>
+        <ion-col> Seguidores </ion-col>
+        <ion-col> Canciones </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
 </ion-content>
