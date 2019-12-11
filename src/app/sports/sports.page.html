@@ -8,7 +8,21 @@
 </ion-header>
 
 <ion-content>
- <agm-map>
-   
+ <agm-map  *ngIf="currentLocation" 
+           [latitude]="currentLocation.lat" 
+           [longitude]="currentLocation.lng"
+           [zoom]="defaultZoom">
+    
+    <agm-marker [latitude]="currentLocation.lat" 
+                [longitude]="currentLocation.lng"
+                iconUrl="assets/img/bike.png">
+    </agm-marker>
+
+    <agm-polyline [strokeColor]="'red'" *ngIf="coordinates">
+      <agm-polyline-point *ngFor="let coords of coordinates"
+                          [latitude]="coords.lat"
+                          [longitude]="coords.lng">
+      </agm-polyline-point>
+    </agm-polyline>
  </agm-map>
 </ion-content>

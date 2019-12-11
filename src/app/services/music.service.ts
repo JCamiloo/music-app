@@ -25,4 +25,8 @@ export class MusicService {
   getAlbumTracks(albumId) {
     return this.http.get(`${environment.API_URL}albums/${albumId}/tracks?country=CO`);
   }
+
+  searchTracks(text: string) {
+    return this.http.get(`${environment.API_URL}search?q=${text}&type=track`);
+  }
 }
