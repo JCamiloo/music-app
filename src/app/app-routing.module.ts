@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'menu',
     canActivate: [LoginGuard, IntroGuard],
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
-  },
+  }
 ];
 
 @NgModule({
